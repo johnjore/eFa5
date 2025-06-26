@@ -17,7 +17,7 @@
 # along with this SPEC. If not, see <http://www.gnu.org/licenses/>.
 #-----------------------------------------------------------------------------#
 
-%define releasenum 8
+%define releasenum 11
 
 Name:      eFa
 Summary:   eFa Maintenance rpm
@@ -280,7 +280,7 @@ Requires:  sqlgrey >= 1:1.8.0-8
     # sqlgrey                                    # eFa       # Greylisting
 Requires: sqlgreywebinterface >= 1:1.1.9-5
     # sqlgreywebinterrface                       # eFa       # mailwatch
-Requires:  MailWatch >= 1:1.2.23-2
+Requires:  MailWatch >= 1:1.2.23-4
     # MailWatch                                  # eFa     # MailWatch Frontend
 Requires:  spamassassin >= 4.0.1-2
     # spamassassin                               # eFa     # MailScanner
@@ -298,6 +298,12 @@ Requires: perl-Devel-Cycle >= 1.12-16
     #                                            # epel    # spamassassin
 Requires: certbot >= 2.9.0-1
     #                                            # epel    # eFa
+Requires: tuned >= 2.22.1-1
+    #                                            # base    # eFa
+Requires: bash-completion >= 1:2.11-5
+    #                                            # base    # eFa
+Requires: vim-enhanced >= 8.2.2637-20
+    #                                            # base    # eFa
 
 # Unverified dependencies
 #Requires:  openssl-devel >= 1:3.0.7-5
@@ -541,6 +547,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0644, root, root) %{_sysconfdir}/logrotate.d/eFa-logrotate
 
 %changelog
+* Fri Jul 27 2024 eFa-Project <shawniverson@efa-project.org> - 5.0.0-11
+- Fix quoting for MailWatchConf.pm
+
+* Fri Jul 26 2024 eFa-Project <shawniverson@efa-project.org> - 5.0.0-10
+- Check queues for proper permissions with cron, added rpms by request
+
+* Sat Jul 20 2024 eFa-Project <shawniverson@efa-project.org> - 5.0.0-9
+- Fixes to aid in migration from v4 appliance
+
 * Tue Jun 11 2024 eFa Project <shawniverson@efa-project.org> - 5.0.0-8
 - Fix MailWatchConf.pm configuration during update
 
